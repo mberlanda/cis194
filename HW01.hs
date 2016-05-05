@@ -24,15 +24,16 @@ toDigits n = reverse (toRevDigits n)
 -- Double every second number in a list starting on the left.
 doubleEveryOther :: [Integer] -> [Integer]
 doubleEveryOther [] = []
-doubleEveryOther (x:[]) = [x]
-doubleEveryOther (x:y:xs) = x:(2*y):(doubleEveryOther xs)
+doubleEveryOther (n:[]) = [n]
+doubleEveryOther (n:m:ns) = n:(2*m):(doubleEveryOther ns)
 
 -- Exercise 4 -----------------------------------------
 
 -- Calculate the sum of all the digits in every Integer.
 sumDigits :: [Integer] -> Integer
-sumDigits = undefined
-
+sumDigits [] = 0
+sumDigits (n: []) = sum (toRevDigits n)
+sumDigits (n: ns) = sum (toRevDigits n) + sumDigits(ns)
 
 -- Exercise 5 -----------------------------------------
 

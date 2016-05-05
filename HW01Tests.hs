@@ -49,8 +49,13 @@ ex3Tests = [ Test "doubleEveryOther test" testDoubleEveryOther
 
 -- Exercise 4 -----------------------------------------
 
+testSumDigits :: ([Integer], Integer) -> Bool
+testSumDigits(xs, n) = sumDigits xs == n
+
 ex4Tests :: [Test]
-ex4Tests = []
+ex4Tests = [ Test "sumDigits test" testSumDigits
+             [([1, 2, 3, 4, 5], 15 ), ([11, 22, 33, 44, 55], 30)]
+           ]
 
 -- Exercise 5 -----------------------------------------
 
