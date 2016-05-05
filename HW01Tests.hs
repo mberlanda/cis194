@@ -24,13 +24,28 @@ ex1Tests = [ Test "lastDigit test" testLastDigit
 
 -- Exercise 2 -----------------------------------------
 
+testToRevDigits :: (Integer, [Integer]) -> Bool
+testToRevDigits(n, xs) = toRevDigits n == xs
+
+testToDigits :: (Integer, [Integer]) -> Bool
+testToDigits(n, xs) = toDigits n == xs
+
 ex2Tests :: [Test]
-ex2Tests = []
+ex2Tests = [ Test "toRevDigits test" testToRevDigits
+             [(12345, [5, 4, 3, 2, 1]),(54321, [1, 2, 3, 4, 5])]
+           , Test "toDigits test" testToDigits
+             [(12345, [1, 2, 3, 4, 5]),(54321, [5, 4, 3, 2, 1])]
+           ]
 
 -- Exercise 3 -----------------------------------------
 
+testDoubleEveryOther :: ([Integer], [Integer]) -> Bool
+testDoubleEveryOther(xs, ys) = doubleEveryOther xs == ys
+
 ex3Tests :: [Test]
-ex3Tests = []
+ex3Tests = [ Test "doubleEveryOther test" testDoubleEveryOther
+            [([1, 2, 3, 4, 5], [1, 4, 3, 8, 5]), ([1, 1, 1, 1, 1], [1, 2, 1, 2, 1])]
+           ]
 
 -- Exercise 4 -----------------------------------------
 
