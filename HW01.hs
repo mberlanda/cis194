@@ -48,4 +48,14 @@ type Peg = String
 type Move = (Peg, Peg)
 
 hanoi :: Integer -> Peg -> Peg -> Peg -> [Move]
-hanoi = undefined
+hanoi 0 _ _ _ = []
+hanoi 1 a b c = [(a, c)]
+
+hanoi n a b c = moveToB ++ moveTop ++ moveToC
+  where
+-- move n − 1 discs from a to b using c as temporary storage
+   moveToB = hanoi (n-1) a c b
+-- move the top disc from a to c
+   moveTop = hanoi 1 a b c
+-- move n − 1 discs from b to c using a as temporary storage.
+   moveToC = hanoi (n-1) b a c
