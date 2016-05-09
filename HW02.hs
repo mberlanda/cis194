@@ -62,7 +62,7 @@ isConsistent (Move guess e n) actual = (Move guess e n) == getMove actual guess
 -- Exercise 5 -----------------------------------------
 
 filterCodes :: Move -> [Code] -> [Code]
-filterCodes = undefined
+filterCodes m cs = filter (\c -> isConsistent m c) cs
 
 -- Exercise 6 -----------------------------------------
 
