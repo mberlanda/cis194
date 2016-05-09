@@ -8,3 +8,6 @@ In order to get started, you need first to [install Haskell](https://www.haskell
 ```bash
 $ sudo apt-get install haskell-platform
 ```
+
+#### Basic Libraries
+- [Data List](http://hackage.haskell.org/package/base-4.7.0.1/docs/Data-List.html) : basic functions on list provided by The University of Glasgow
