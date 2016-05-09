@@ -67,7 +67,9 @@ filterCodes m cs = filter (\c -> isConsistent m c) cs
 -- Exercise 6 -----------------------------------------
 
 allCodes :: Int -> [Code]
-allCodes = undefined
+allCodes 0 = [[]]
+allCodes n = addElement . allCodes $ n-1
+  where addElement codes = concatMap(\c -> (map (\cc -> cc:c) colors)) codes
 
 -- Exercise 7 -----------------------------------------
 
