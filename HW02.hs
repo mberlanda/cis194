@@ -57,7 +57,7 @@ getMove actual guess = Move guess exactMatch nonExactMatch
 -- Exercise 4 -----------------------------------------
 
 isConsistent :: Move -> Code -> Bool
-isConsistent = undefined
+isConsistent (Move guess e n) actual = (Move guess e n) == getMove actual guess
 
 -- Exercise 5 -----------------------------------------
 
