@@ -37,11 +37,14 @@ exactMatches actual guess = foldl countIfMatch 0 transposed
 
 -- For each peg in xs, count how many times is occurs in ys
 countColors :: Code -> [Int]
-countColors = undefined
+countColors [] = []
+countColors ys = map (\x -> countOccurrencies x ys) colors
+  where countOccurrencies x list = length (filter (==x) list)
 
 -- Count number of matches between the actual code and the guess
 matches :: Code -> Code -> Int
-matches = undefined
+matches actual guess = sum (map minimum transposedCount)
+  where transposedCount = transpose [countColors(actual), countColors(guess)]  
 
 -- Exercise 3 -----------------------------------------
 
