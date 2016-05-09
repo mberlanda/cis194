@@ -50,7 +50,9 @@ matches actual guess = sum (map minimum transposedCount)
 
 -- Construct a Move from a guess given the actual code
 getMove :: Code -> Code -> Move
-getMove = undefined
+getMove actual guess = Move guess exactMatch nonExactMatch
+  where exactMatch = exactMatches actual guess
+        nonExactMatch = matches actual guess - exactMatch
 
 -- Exercise 4 -----------------------------------------
 
