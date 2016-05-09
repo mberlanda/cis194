@@ -74,7 +74,11 @@ allCodes n = addElement . allCodes $ n-1
 -- Exercise 7 -----------------------------------------
 
 solve :: Code -> [Move]
-solve = undefined
+solve c = f(allCodes.length $ c)
+  where f [] = []
+        f (x:xs) = let m = getMove c x
+                    in m : f (filterCodes m xs)
+
 
 -- Bonus ----------------------------------------------
 
