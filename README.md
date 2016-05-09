@@ -9,5 +9,14 @@ In order to get started, you need first to [install Haskell](https://www.haskell
 $ sudo apt-get install haskell-platform
 ```
 
+#### Run Tests
+
+```bash
+$ ghci
+Prelude> :load HW02Tests.hs 
+*HW02Tests> runTests ex1Tests
+[]
+```
+
 #### Basic Libraries
 - [Data List](http://hackage.haskell.org/package/base-4.7.0.1/docs/Data-List.html) : basic functions on list provided by The University of Glasgow
