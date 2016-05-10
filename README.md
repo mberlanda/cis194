@@ -20,3 +20,7 @@ Prelude> :load HW02Tests.hs
 
 #### Basic Libraries
 - [Data List](http://hackage.haskell.org/package/base-4.7.0.1/docs/Data-List.html) : basic functions on list provided by The University of Glasgow
+
+#### Resources  
+- [Real World Haskell](http://book.realworldhaskell.org/) by Bryan O'Sullivan, Don Stewart, and John Goerzen
+- [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/)
