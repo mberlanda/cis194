@@ -49,17 +49,17 @@ evalE st (Val x) = x
 evalE st (Var n) = st n
 evalE st (Op exp1 op exp2) =
   case op of
-    Plus ->    
-    Minus ->  
-    Times -> 
-    Divide -> 
-    Gt ->
-    Ge ->    
-    Lt ->
-    Le ->
-    Eql ->
+    Plus -> a + b
+    Minus -> a - b 
+    Times -> a * b
+    Divide -> a `div` b
+    Gt -> if a > b then 1 else 0
+    Ge -> if a >= b then 1 else 0   
+    Lt -> if a < b then 1 else 0
+    Le -> if a <= b then 1 else 0
+    Eql -> if a == b then 1 else 0
   where a = evalE st exp1
-        
+        b = evalE st exp2
 
 
 -- Exercise 3 -----------------------------------------

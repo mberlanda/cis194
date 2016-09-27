@@ -26,3 +26,6 @@ stx :: State
 stx = extend empty "x" 50
 
 -- Exercise 2 -----------------------------------------
+evalE empty (Op (Val 1) Eql (Val 2)) == 0
+evalE empty (Op (Val 1) Plus (Val 2)) == 3
+evalE empty (Op (Val 1) Minus (Val 2)) == -1
