@@ -29,3 +29,6 @@ stx = extend empty "x" 50
 evalE empty (Op (Val 1) Eql (Val 2)) == 0
 evalE empty (Op (Val 1) Plus (Val 2)) == 3
 evalE empty (Op (Val 1) Minus (Val 2)) == -1
+
+-- Exercise 3 -----------------------------------------
+desugar (Incr "A") == DAssign "A" (Op (Var "A") Plus (Val 1))

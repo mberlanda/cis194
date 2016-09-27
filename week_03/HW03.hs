@@ -72,7 +72,13 @@ data DietStatement = DAssign String Expression
                      deriving (Show, Eq)
 
 desugar :: Statement -> DietStatement
-desugar = undefined
+desugar (Skip) = DSkip
+desugar (Assign st exp) = DAssign st exp
+desugar (If exp st' st'') = DIf exp (desugar st') (desugar st'')
+desugar (While exp st) = DWhile exp (desugar st)
+desugar (Sequence st' st'') = DSequence (desugar st') (desugar st'')
+desugar (Incr st) = DAssign st (Op (Var st) Plus (Val 1))
+desugar (For init exp update loop) = DSequence (desugar init) (DWhile exp (DSequence (desugar loop) (desugar update)))
 
 
 -- Exercise 4 -----------------------------------------
