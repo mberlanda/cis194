@@ -32,3 +32,10 @@ evalE empty (Op (Val 1) Minus (Val 2)) == -1
 
 -- Exercise 3 -----------------------------------------
 desugar (Incr "A") == DAssign "A" (Op (Var "A") Plus (Val 1))
+
+-- Exercise 4 -----------------------------------------
+let s = evalSimple empty (DAssign "A" (Val 10))
+in s "A" == 10
+
+let s = run (extend empty "In" 4) factorial in s "Out" == 24
+let s = run (extend empty "In" 5) factorial in s "Out" == 120

@@ -80,14 +80,25 @@ desugar (Sequence st' st'') = DSequence (desugar st') (desugar st'')
 desugar (Incr st) = DAssign st (Op (Var st) Plus (Val 1))
 desugar (For init exp update loop) = DSequence (desugar init) (DWhile exp (DSequence (desugar loop) (desugar update)))
 
-
 -- Exercise 4 -----------------------------------------
 
 evalSimple :: State -> DietStatement -> State
-evalSimple = undefined
+evalSimple state (DAssign s exp) = extend state s (evalE state exp)
+evalSimple state (DIf exp dst1 dst2)
+  | val == 1 = evalSimple state dst1
+  | otherwise = evalSimple state dst2
+  where
+    val = evalE state exp
+evalSimple state while@(DWhile exp dst)
+  | val == 1 = evalSimple (evalSimple state dst) while
+  | otherwise = state
+  where
+    val = evalE state exp
+evalSimple state (DSequence dst1 dst2) = evalSimple (evalSimple state dst1) dst2
+evalSimple state DSkip = state
 
 run :: State -> Statement -> State
-run = undefined
+run state st = evalSimple state (desugar st)
 
 -- Programs -------------------------------------------
 
