@@ -11,7 +11,7 @@ x = P [0, 1]
 -- Exercise 2 ----------------------------------------
 
 instance (Num a, Eq a) => Eq (Poly a) where
-    (==) = undefined
+   P xs == P ys = xs == ys
  
 -- Exercise 3 -----------------------------------------
 
