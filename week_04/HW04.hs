@@ -67,7 +67,10 @@ instance Num a => Num (Poly a) where
 -- Exercise 7 -----------------------------------------
 
 applyP :: Num a => Poly a -> a -> a
-applyP = undefined
+applyP (P xs) n = f 0 n xs
+  where f :: (Num a) => Int -> a -> [a] -> a
+        f _ _ [] = 0
+        f e s (z:zs) =  z * s^e + f (e+1) s zs
 
 -- Exercise 8 -----------------------------------------
 
