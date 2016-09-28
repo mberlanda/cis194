@@ -6,7 +6,7 @@ newtype Poly a = P [a]
 -- Exercise 1 -----------------------------------------
 
 x :: Num a => Poly a
-x = undefined
+x = P [0, 1]
 
 -- Exercise 2 ----------------------------------------
 

@@ -1,6 +1,6 @@
 # CIS 194: Introduction to Haskell
 
-This repo is presenting the assignments of the course [Introduction To Haskell](http://www.seas.upenn.edu/~cis194/spring15/lectures.html).
+This repo is presenting the assignments of the course [Introduction To Haskell](http://www.seas.upenn.edu/~cis194/spring15/lectures.html) - CIS Spring 2015.
 
 ### Prerequisites
 #### Install Haskell
