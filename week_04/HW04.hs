@@ -48,7 +48,10 @@ plus (P xs) (P ys) = P $ zipWith (+) (pad xs) (pad ys)
 -- Exercise 5 -----------------------------------------
 
 times :: Num a => Poly a -> Poly a -> Poly a
-times = undefined
+times (P xs) (P ys) = foldr (+) (P [0]) (f xs ys)
+  where f :: Num a => [a] -> [a] -> [Poly a]
+        f [] _     = []
+        f (z:zs) p = P (map (* z) p) : f zs (0:p)
 
 -- Exercise 6 -----------------------------------------
 
