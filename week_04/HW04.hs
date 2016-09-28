@@ -58,8 +58,8 @@ times (P xs) (P ys) = foldr (+) (P [0]) (f xs ys)
 instance Num a => Num (Poly a) where
     (+) = plus
     (*) = times
-    negate      = undefined
-    fromInteger = undefined
+    negate (P zs) = P [z * (-1) | z <- zs]
+    fromInteger z = P [fromInteger z] 
     -- No meaningful definitions exist
     abs    = undefined
     signum = undefined
