@@ -41,7 +41,9 @@ enum xs = zip xs [0..]
 -- Exercise 4 -----------------------------------------
 
 plus :: Num a => Poly a -> Poly a -> Poly a
-plus = undefined
+plus (P xs) (P ys) = P $ zipWith (+) (pad xs) (pad ys)
+  where pad zs = zs ++ replicate (maxl - (length zs)) 0
+        maxl = max (length xs) (length ys)
 
 -- Exercise 5 -----------------------------------------
 
