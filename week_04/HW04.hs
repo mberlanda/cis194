@@ -56,13 +56,13 @@ times (P xs) (P ys) = foldr (+) (P [0]) (f xs ys)
 -- Exercise 6 -----------------------------------------
 
 instance Num a => Num (Poly a) where
-    (+) = plus
-    (*) = times
-    negate (P zs) = P [z * (-1) | z <- zs]
-    fromInteger z = P [fromInteger z] 
-    -- No meaningful definitions exist
-    abs    = undefined
-    signum = undefined
+  (+) = plus
+  (*) = times
+  negate (P zs) = P [z * (-1) | z <- zs]
+  fromInteger z = P [fromInteger z] 
+  -- No meaningful definitions exist
+  abs    = undefined
+  signum = undefined
 
 -- Exercise 7 -----------------------------------------
 
@@ -75,12 +75,17 @@ applyP (P xs) n = f 0 n xs
 -- Exercise 8 -----------------------------------------
 
 class Num a => Differentiable a where
-    deriv  :: a -> a
-    nderiv :: Int -> a -> a
-    nderiv = undefined
+  deriv  :: a -> a
+  nderiv :: Int -> a -> a
+  nderiv 0 z = z
+  nderiv n z = nderiv (n-1) . deriv $ z
 
 -- Exercise 9 -----------------------------------------
 
 instance Num a => Differentiable (Poly a) where
-    deriv = undefined
-
+  deriv (P [])     = P [0]
+  deriv (P (_:xs)) = P $ f 1 xs
+    where f :: Num a => Int -> [a] -> [a]
+          f _ []  = [0]
+          f e [i] = [i * fromIntegral e]
+          f e (i:is) = (i * fromIntegral e) : f (e + 1) is
