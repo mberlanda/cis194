@@ -1,6 +1,9 @@
 {-# OPTIONS_GHC -Wall #-}
 module HW04 where
 
+import Data.List(intercalate)
+
+
 newtype Poly a = P [a]
 
 -- Exercise 1 -----------------------------------------
@@ -11,12 +14,29 @@ x = P [0, 1]
 -- Exercise 2 ----------------------------------------
 
 instance (Num a, Eq a) => Eq (Poly a) where
-   P xs == P ys = xs == ys
+  P xs == P ys = xs == ys
  
 -- Exercise 3 -----------------------------------------
 
 instance (Num a, Eq a, Show a) => Show (Poly a) where
-    show = undefined
+  show (P [])  = "0"
+  show (P [0]) = "0"
+  show (P xs)  = intercalate " + " $ terms
+    where terms =  notNull $ map term (enum xs)
+          notNull = filter (not . null)
+
+term :: (Num a, Eq a, Show a) => (a, Int) -> String
+term (0,  _) = ""
+term (c,    0) = show c
+term (1,    1) = "x"
+term ((-1), 1) = "-x"
+term (c,    1) = show c ++ "x"
+term (1,    e) = "x^" ++ show e
+term ((-1), e) = "-x^" ++ show e
+term (c,    e) = show c ++ "x^" ++ show e
+
+enum :: [b] -> [(b, Int)]
+enum xs = zip xs [0..]
 
 -- Exercise 4 -----------------------------------------
 
